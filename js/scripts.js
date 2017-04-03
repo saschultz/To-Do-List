@@ -28,7 +28,18 @@ $(function() {
 
     $("input#name, input#time, input#landmarks, input#notes").val("");
 
-    $("#name-output").append("<li>" + newPlaces.nameYear() + "</li>");
+    $(".name-output").append("<li><span class='nameYearOutput'>" + newPlaces.nameYear() + "</span></li>");
+
+    console.log(newPlaces);
+
+    $(".nameYearOutput").last().click(function() {
+      $("#infodiv").show();
+      $("#infodiv h2").text(newPlaces.placeName);
+      $("#info").append("<li>" + newPlaces.time + "</li>")
+      $("#info").append("<li>" + newPlaces.landmarks + "</li>")
+      $("#info").append("<li>" + newPlaces.notes + "</li>")
+    });
+
   });
 
 });
