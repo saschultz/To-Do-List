@@ -1,45 +1,38 @@
 // Business logic
 
-function Places(placeName, time, landmarks, notes) {
-  this.placeName = placeName;
-  this.time = time;
-  this.landmarks = landmarks;
-  this.notes = notes;
+function ToDo(item, state) {
+  this.item = item;
+  this.state = state;
 }
 
-Places.prototype.nameYear = function() {
-  return this.placeName + " - " + this.time;
+ToDo.prototype.yell = function() {
+  return this.item.toUpperCase() + "!!";
 }
-
-
 
 // UI logic
 
 $(function() {
-  $("form#places").submit(function(e) {
+  $("form#one").submit(function(e) {
     e.preventDefault();
 
-    var inputName = $("input#name").val();
-    var inputTime = $("input#time").val();
-    var inputLandmarks = $("input#landmarks").val();
-    var inputNotes = $("input#notes").val();
+    var inputtedToDo = $("#list-item").val();
 
-    var newPlaces = new Places(inputName, inputTime, inputLandmarks, inputNotes);
+    var newToDo = new ToDo(inputtedToDo);
 
-    $("input#name, input#time, input#landmarks, input#notes").val("");
 
-    $(".name-output").append("<li><span class='nameYearOutput'>" + newPlaces.nameYear() + "</span></li>");
 
-    console.log(newPlaces);
+    $("#sortable").append("<li class='toDo'>" + newToDo.yell() + "</li>");
 
-    $(".nameYearOutput").last().click(function() {
-      $("#infodiv").show();
-      $("#infodiv h2").text(newPlaces.placeName);
-      $("#info").append("<li>" + newPlaces.time + "</li>")
-      $("#info").append("<li>" + newPlaces.landmarks + "</li>")
-      $("#info").append("<li>" + newPlaces.notes + "</li>")
+    $("#sortable").sortable({
+      revert: true
     });
+    $(".toDo").draggable({
+      connectToSortable: "#sortable",
+      // helper: "clone",
+      // revert: "invalid"
+    });
+    $("ul, .toDo").disableSelection();
+
 
   });
-
 });
