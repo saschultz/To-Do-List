@@ -7,42 +7,63 @@
     <script src="js/jquery-3.2.0.js"></script>
     <script src="js/scripts.js"></script>
     </script>
-    <title>Address Book</title>
+    <title>Places you've been</title>
   </head>
   <body>
 
-    <div class="container">
-      <h1>Address book</h1>
+    <div class="jumbotron">
+      <h1>Share the places you've been!</h1>
+    </div>
 
+    <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h2>Add a contact:</h2>
-          <form id="new-contact">
+
+          <form id="places">
             <div class="form-group">
-              <label for="new-first-name">First name</label>
-              <input type="text" class="form-control" id="new-first-name">
-            </div>
-            <div class="form-group">
-              <label for="new-last-name">Last name</label>
-              <input type="text" class="form-control" id="new-last-name">
+              <label for="name">Name:</label>
+              <input id="name" class="form-control" type="text">
             </div>
 
-            <button type="submit" class="btn">Add</button>
+            <div class="form-group">
+              <label for="time">Time of year:</label>
+              <input id="time" class="form-control" type="text">
+            </div>
+
+            <div class="form-group">
+              <label for="landmarks">Notable landmarks:</label>
+              <input id="landmarks" class="form-control" type="text">
+            </div>
+
+            <div class="form-group">
+              <label for="notes">Notes:</label>
+              <input id="notes" class="form-control" type="text">
+            </div>
+
+            <button class="btn" type="submit" name="button">Submit!</button>
           </form>
-          <h2>Contacts:</h2>
-          <ul id="contacts">
+
+        </div>
+
+        <div class="col-md-6">
+          <ul id="name-output">
+
           </ul>
         </div>
 
-        <div class="col-md-6">
-          <div id="show-contact">
-            <h2></h2>
+      </div>
 
-            <p>First name: <span class="first-name"></span></p>
-            <p>Last name: <span class="last-name"></span></p>
-          </div>
+      <div class="row" id="infodiv">
+        <div class="col-md-12">
+          <h2></h2>
+          <ul id="info">
+
+          </ul>
+
         </div>
       </div>
+
     </div>
+
   </body>
 </html>
